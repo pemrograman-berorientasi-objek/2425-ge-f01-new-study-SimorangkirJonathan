@@ -23,7 +23,7 @@ public class App {
                     String nama = data[2];
                     String prodi = data[3];
 
-                    // Check if student exists
+                  
                     List<Mahasiswa> students = entityManager.createQuery(
                             "SELECT s FROM Mahasiswa s WHERE s.nim = :nim", Mahasiswa.class)
                             .setParameter("nim", nim)
@@ -54,15 +54,15 @@ public class App {
                     String semester = data[3];
                     String kredit = data[4];
 
-                    // Check if course exists
+                 
                     Course existingCourse = entityManager.find(Course.class, kode);
                     if (existingCourse != null) {
-                        // Update existing course
+                    
                         existingCourse.setNama(namaCourse);
                         existingCourse.setSemester(semester);
                         existingCourse.setKredit(kredit);
                     } else {
-                        // Create new course
+              
                         Course course = new Course(kode, namaCourse, semester, kredit);
                         entityManager.persist(course);
                     }
@@ -85,7 +85,7 @@ public class App {
                     String nimEnroll = data[1];
                     String kodeEnroll = data[2];
 
-                    // Check if enrollment exists
+                 
                     Enroll existingEnrollment = entityManager.createQuery(
                             "SELECT e FROM Enroll e WHERE e.nim = :nim AND e.kode = :kode", Enroll.class)
                             .setParameter("nim", nimEnroll)
@@ -99,7 +99,7 @@ public class App {
                         continue;
                     }
 
-                    // Retrieve student and course
+           
                     Mahasiswa studentEnroll = entityManager.find(Mahasiswa.class, nimEnroll);
                     Course courseEnroll = entityManager.find(Course.class, kodeEnroll);
 
@@ -113,7 +113,7 @@ public class App {
                         continue;
                     }
 
-                    // Create enrollment
+                 
                     Enroll enroll = new Enroll(studentEnroll.getNim(), kodeEnroll);
                     entityManager.getTransaction().begin();
                     entityManager.persist(enroll);
@@ -123,12 +123,12 @@ public class App {
                 case "student-show":
                     String nimDetail = data[1];
 
-                    // Retrieve student information
+           
                     Mahasiswa studentDetail = entityManager.find(Mahasiswa.class, nimDetail);
                     if (studentDetail != null) {
                         System.out.println(studentDetail.toString());
 
-                        // Retrieve enrolled courses for the student
+                      
                         List<Enroll> enrolledCourses = entityManager.createQuery(
                                 "SELECT e FROM Enroll e WHERE e.nim = :nim ORDER BY e.course.semester ASC, e.course.kode ASC",
                                 Enroll.class)
