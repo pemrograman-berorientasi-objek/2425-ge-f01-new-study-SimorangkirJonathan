@@ -7,6 +7,6 @@ package pbo;
 public class App {
 
   public static void main(String[] args) {
-    // your codes
+    
   }
 }
