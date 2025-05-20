@@ -1,7 +1,13 @@
 package pbo.model;
 
 public class Student {
-    private 
+    private String NIM;
+    private String Nama;
+    private String Prodi;
+    
+    
+    
+    
     
     
 }
