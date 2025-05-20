@@ -3,61 +3,64 @@ package pbo.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Course")
+@Table(name = "Course")
 
 public class Course {
     @Id
-
-    @Column(name="code", nullable = false, length = 30)
-    private String code;
-    @Column(name="matakuliah", nullable = false, length = 30)
-    private String matakuliah;
-    @Column(name="sks", nullable = false, length = 30)
-    private String sks;
-    @Column(name="semester", nullable = false, length = 30)
+    @Column(name = "kode", nullable = false, length = 30)
+    private String kode;
+    @Column(name = "nama", nullable = false, length = 30)
+    private String nama;
+    @Column(name = "semester", nullable = false, length = 30)
     private String semester;
+    @Column(name = "kredit", nullable = false, length = 30)
+    private String kredit;
 
-public Course (String code, String matakuliah, String sks, String semester){
-    this.code=code;
-    this.matakuliah=matakuliah;
-    this.sks=sks;
-    this.semester=semester;
+    public Course() {
+    }
 
-     
-}
+    public Course(String kode, String nama, String semester, String kredit) {
+        this.kode = kode;
+        this.nama = nama;
+        this.semester = semester;
+        this.kredit = kredit;
+    }
 
-public String getCode(){
-    return code;
-}
-public void setCode(String code){
-    this.code=code;
-}
-public String getMatakuliah(){
-    return matakuliah;
-}
-public void setMatakuliah(String matakuliah){
-    this.matakuliah=matakuliah;
-}
+    public String getKode() {
+        return kode;
+    }
 
-public String getSks (){
-    return sks;
-}
+    public void setKode(String kode) {
+        this.kode = kode;
+    }
 
-public void setSks (String sks){
-    this.sks=sks;
-}
+    public String getNama() {
+        return nama;
+    }
 
-public String getSemester () {
-    return semester;
-}
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
 
-public void setSemester (String semester){
-    this.semester=semester;
-}
+    public String getSemester() {
+        return semester;
+    }
 
-@Override
- public String toString() {
-        return code + "|" + matakuliah + "|" + sks;
-    
-}
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
+
+    public String getKredit() {
+        return kredit;
+    }
+
+    public void setKredit(String kredit) {
+        this.kredit = kredit;
+    }
+
+    @Override
+    public String toString() {
+        return kode + "|" + nama + "|" + semester + "|" + kredit;
+    }
+
 }
